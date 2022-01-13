@@ -1,0 +1,14 @@
+[Unit]
+Description=Open Source Routing Machine
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/osrm-routed -p 5001 --algorithm=CH --dataset-name=iran-osm-CH --shared-memory
+User=lotus
+Group=lotus
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
